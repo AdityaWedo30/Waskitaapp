@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import React from 'react';
+import './App.css'; 
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+
+// >>> PERBAIKAN: TAMBAHKAN EKSTENSI .jsx <<<
+import LoginPage from './pages/LoginPage.jsx'; 
+import RegisterPage from './pages/RegisterPage.jsx';    
+// >>> PERBAIKAN SELESAI <<<
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LoginPage />} /> 
+          <Route path="/login" element={<LoginPage />} /> 
+          <Route path="/register" element={<RegisterPage />} /> 
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
