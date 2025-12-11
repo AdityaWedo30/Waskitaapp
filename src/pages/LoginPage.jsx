@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/LoginPage.css'; // Import file CSS terpisah
+// Import Link dari react-router-dom
+import { Link } from 'react-router-dom'; 
+import '../styles/LoginPage.css'; 
 
 const LoginPage = () => {
   // State untuk mengontrol input form
@@ -64,7 +66,7 @@ const LoginPage = () => {
           
           {/* Tautan Daftar */}
           <p className="signup-link">
-            Belum punya akun? <a href="/signup">Daftar di sini</a>
+            Belum punya akun? <Link to="/register">Daftar di sini</Link>
           </p>
         </form>
       </div>

@@ -18,7 +18,7 @@
         /* Lapisan Overlay: Hitam semi-transparan */
         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
         /* Gambar Latar Belakang (Jalur: styles -> src -> assets) */
-        url('../assets/background.jpg'); 
+        url('../assets/trakor.jpg'); 
     
     /* Properti Layout Gambar */
     background-size: cover;           
