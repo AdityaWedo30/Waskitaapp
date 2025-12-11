@@ -1,0 +1,44 @@
+/* src/styles/CommonBackground.css */
+
+.App-background-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* Properti Layout Gambar umum */
+    background-size: cover;           
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    /* ANIMASI: Transisi untuk background-image dan background-color */
+    transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out;
+}
+
+.App-content-wrapper {
+    z-index: 2; /* Pastikan konten di atas background */
+}
+
+/* Latar Belakang Login Page */
+.login-bg {
+    /* Warna latar belakang fallback */
+    background-color: #304e74; 
+    background-image: 
+        /* Lapisan Overlay: Hitam semi-transparan */
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+        /* Gambar Latar Belakang */
+        url('../assets/background.jpg'); 
+}
+
+/* Latar Belakang Register Page */
+.register-bg {
+    /* Warna latar belakang fallback yang berbeda */
+    background-color: #0f1c32; 
+    background-image: 
+        /* Lapisan Overlay: Hitam semi-transparan */
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+        /* Gambar Latar Belakang */
+        url('../assets/trakor.jpg'); 
+}

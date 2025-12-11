@@ -2,23 +2,20 @@
 
 import React from 'react';
 import './App.css'; 
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+import { BrowserRouter } from 'react-router-dom'; // Hapus import Routes dan Route
 
-// >>> PERBAIKAN: TAMBAHKAN EKSTENSI .jsx <<<
-import LoginPage from './pages/LoginPage.jsx'; 
-import RegisterPage from './pages/RegisterPage.jsx';    
-// >>> PERBAIKAN SELESAI <<<
+// >>> Hapus import halaman, akan dihandle di AppRouter <<<
+// import LoginPage from './pages/LoginPage.jsx'; 
+// import RegisterPage from './pages/RegisterPage.jsx';    
+
+// >>> Perubahan: Import AppRouter <<<
+import AppRouter from './AppRouter.jsx'; 
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<LoginPage />} /> 
-          <Route path="/login" element={<LoginPage />} /> 
-          <Route path="/register" element={<RegisterPage />} /> 
-        </Routes>
-      </div>
+      {/* Ganti div.App dengan AppRouter yang menangani routing & background */}
+      <AppRouter />
     </BrowserRouter>
   );
 }

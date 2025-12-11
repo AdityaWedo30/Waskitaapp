@@ -1,6 +1,8 @@
+// src/pages/RegisterPage.jsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/RegisterPage.css'; // Import file CSS khusus untuk Register
+import '../styles/RegisterPage.css'; // <<< KEMBALIKAN IMPORT CSS INI
 
 const RegisterPage = () => {
     // State untuk mengontrol input form Register
@@ -31,81 +33,79 @@ const RegisterPage = () => {
     };
 
     return (
-        // Menggunakan class login-page dan login-container agar CSS Glassmorphism berlaku
-        <div className="login-page"> 
-            <div className="login-container">
-                <h2>Daftar Akun Baru</h2>
+        // PERUBAHAN: Sekarang hanya menggunakan .login-container karena latar belakang diurus AppRouter
+        <div className="login-container">
+            <h2>Daftar Akun Baru</h2>
+            
+            <form onSubmit={handleSubmit}>
                 
-                <form onSubmit={handleSubmit}>
-                    
-                    {/* Input Nama */}
-                    <div className="input-group">
-                        <label htmlFor="name">Nama Lengkap</label>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            placeholder="Masukkan nama Anda"
-                            required
-                            value={name} 
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </div>
+                {/* Input Nama */}
+                <div className="input-group">
+                    <label htmlFor="name">Nama Lengkap</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Masukkan nama Anda"
+                        required
+                        value={name} 
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
 
-                    {/* Input Email */}
-                    <div className="input-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Masukkan email Anda"
-                            required
-                            value={email} 
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div>
-                    
-                    {/* Input Password */}
-                    <div className="input-group">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Buat password"
-                            required
-                            value={password} 
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
+                {/* Input Email */}
+                <div className="input-group">
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Masukkan email Anda"
+                        required
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div>
+                
+                {/* Input Password */}
+                <div className="input-group">
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Buat password"
+                        required
+                        value={password} 
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
 
-                    {/* Input Konfirmasi Password */}
-                    <div className="input-group">
-                        <label htmlFor="confirmPassword">Konfirmasi Password</label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            name="confirmPassword"
-                            placeholder="Ulangi password"
-                            required
-                            value={confirmPassword} 
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
-                    </div>
-                    
-                    {/* Tombol Submit */}
-                    <button type="submit" className="login-button">
-                        Daftar
-                    </button>
-                    
-                    {/* Tautan Login */}
-                    <p className="signup-link">
-                        Sudah punya akun? 
-                        <Link to="/login">Login di sini</Link>
-                    </p>
-                </form>
-            </div>
+                {/* Input Konfirmasi Password */}
+                <div className="input-group">
+                    <label htmlFor="confirmPassword">Konfirmasi Password</label>
+                    <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Ulangi password"
+                        required
+                        value={confirmPassword} 
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                    />
+                </div>
+                
+                {/* Tombol Submit */}
+                <button type="submit" className="login-button">
+                    Daftar
+                </button>
+                
+                {/* Tautan Login */}
+                <p className="signup-link">
+                    Sudah punya akun? 
+                    <Link to="/login">Login di sini</Link>
+                </p>
+            </form>
         </div>
     );
 };

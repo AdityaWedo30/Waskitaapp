@@ -1,7 +1,9 @@
+// src/pages/LoginPage.jsx
+
 import React, { useState } from 'react';
 // Import Link dari react-router-dom
 import { Link } from 'react-router-dom'; 
-import '../styles/LoginPage.css'; 
+import '../styles/LoginPage.css'; // <<< KEMBALIKAN IMPORT CSS INI
 
 const LoginPage = () => {
   // State untuk mengontrol input form
@@ -26,50 +28,49 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-page">
-      <div className="login-container">
-        <h2>Login Akun</h2>
+    // PERUBAHAN: Sekarang hanya menggunakan .login-container karena latar belakang diurus AppRouter
+    <div className="login-container">
+      <h2>Login Akun</h2>
+      
+      <form onSubmit={handleSubmit}>
+        {/* Input Email */}
+        <div className="input-group">
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Masukkan email Anda"
+            required
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
         
-        <form onSubmit={handleSubmit}>
-          {/* Input Email */}
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Masukkan email Anda"
-              required
-              value={email} 
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          
-          {/* Input Password */}
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Masukkan password Anda"
-              required
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          
-          {/* Tombol Submit */}
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          
-          {/* Tautan Daftar */}
-          <p className="signup-link">
-            Belum punya akun? <Link to="/register">Daftar di sini</Link>
-          </p>
-        </form>
-      </div>
+        {/* Input Password */}
+        <div className="input-group">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Masukkan password Anda"
+            required
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        
+        {/* Tombol Submit */}
+        <button type="submit" className="login-button">
+          Login
+        </button>
+        
+        {/* Tautan Daftar */}
+        <p className="signup-link">
+          Belum punya akun? <Link to="/register">Daftar di sini</Link>
+        </p>
+      </form>
     </div>
   );
 };
