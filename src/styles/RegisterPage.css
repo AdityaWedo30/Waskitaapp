@@ -47,9 +47,12 @@
     border-radius: 15px; 
     width: 100%;
     max-width: 400px; 
+    min-width: 300px;
     text-align: center;
     color: #ffffff; 
-    z-index: 2; 
+    z-index: 2;
+    box-sizing: border-box;
+    margin: 0 auto;
 }
 
 /* Penataan Judul */
@@ -113,7 +116,7 @@
 
 .login-button:hover {
     background-color: #ffef4d; 
-    color: #0f1c32
+    color: #0f1c32;
 }
 
 /* Penataan Tautan */

@@ -2,18 +2,18 @@
 
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'; // Import library yang tadi error
 
 import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 
 import './styles/CommonBackground.css'; 
-import './styles/PageTransition.css'; // Import CSS transisi
+import './styles/PageTransition.css';
 
 const AppRouter = () => {
   const location = useLocation();
   const [background, setBackground] = useState('');
-  const transitionDuration = 500; 
+  const [displayLocation, setDisplayLocation] = useState(location);
+  const [transitionStage, setTransitionStage] = useState('fadeIn');
 
   useEffect(() => {
     // Tentukan kelas background berdasarkan path saat ini
@@ -24,28 +24,32 @@ const AppRouter = () => {
     }
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (location !== displayLocation) {
+      setTransitionStage('fadeOut');
+    }
+  }, [location, displayLocation]);
+
+  const onTransitionEnd = () => {
+    if (transitionStage === 'fadeOut') {
+      setDisplayLocation(location);
+      setTransitionStage('fadeIn');
+    }
+  };
+
   return (
     <div className={`App-background-wrapper ${background}`}>
       <div className="App-content-wrapper">
-        {/*
-          TransitionGroup dan CSSTransition untuk animasi konten halaman.
-        */}
-        <TransitionGroup className="transition-group">
-          <CSSTransition
-            key={location.key} 
-            timeout={transitionDuration}
-            classNames="page-transition" 
-          >
-            <div className="page-wrapper"> 
-              {/* Penting: Routes harus menggunakan prop 'location' dari useLocation */}
-              <Routes location={location}>
-                <Route path="/" element={<LoginPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-              </Routes>
-            </div>
-          </CSSTransition>
-        </TransitionGroup>
+        <div 
+          className={`page-wrapper page-transition-${transitionStage}`}
+          onAnimationEnd={onTransitionEnd}
+        >
+          <Routes location={displayLocation}>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );

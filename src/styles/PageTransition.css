@@ -1,24 +1,14 @@
 /* src/styles/PageTransition.css */
 
-/* Kontainer utama untuk transisi. Harus menggunakan posisi relatif */
-.transition-group {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-/* Wrapper untuk setiap halaman yang masuk/keluar. Harus menggunakan posisi absolut 
-   agar transisi dapat berjalan di luar alur dokumen (overlap) */
+/* Wrapper untuk setiap halaman */
 .page-wrapper {
-  position: absolute;
   width: 100%;
-  /* Atur tinggi agar sesuai dengan container konten */
-  height: 100%; 
-  top: 0;
-  left: 0;
+  min-height: 100%;
   display: flex; 
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* ===============================================
@@ -26,30 +16,36 @@ DEFINISI ANIMASI PAGE TRANSITION (Slide + Fade)
 ===============================================
 */
 
-/* 1. Halaman yang MASUK */
-
-/* Keadaan AWAL halaman yang masuk */
-.page-transition-enter {
-  opacity: 0;
-  /* Geser dari kanan, sedikit di luar layar */
-  transform: translateX(100px); 
+/* Halaman yang MASUK (fadeIn) */
+.page-transition-fadeIn {
+  animation: fadeInSlide 500ms ease-out forwards;
 }
 
-/* Keadaan AKTIF (selama transisi) halaman yang masuk */
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateX(0%);
-  /* Durasi transisi (0.5 detik) */
-  transition: opacity 500ms ease-out, transform 500ms ease-out;
+/* Halaman yang KELUAR (fadeOut) */
+.page-transition-fadeOut {
+  animation: fadeOutSlide 500ms ease-in forwards;
 }
 
-/* 2. Halaman yang KELUAR */
+/* Animasi untuk halaman yang masuk */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-/* Keadaan AKTIF (selama transisi) halaman yang keluar */
-.page-transition-exit-active {
-  opacity: 0;
-  /* Geser ke kiri */
-  transform: translateX(-100px); 
-  /* Durasi transisi (0.5 detik) */
-  transition: opacity 500ms ease-in, transform 500ms ease-in;
+/* Animasi untuk halaman yang keluar */
+@keyframes fadeOutSlide {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
 }
